@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= 'Slack Group Manager'
+  ul(id='groups')
+    each group in groups
+      li
+        a(data-id= group.id data-name= group.name href= 'javascript: ') #{group.name} (#{group.user_count})
+  select(multiple id= 'user_select' size= users.length)
+    each user in users
+      option(value= user.id)= user.profile.real_name
+  button(id='save') Save
